@@ -1,0 +1,69 @@
+@import "tailwindcss";
+@import "remixicon/fonts/remixicon.css";
+
+/*
+  ---------------------------------------------------------------------------
+  GLOBAL DESIGN TOKENS
+  Single source of truth for color + font. Change a value here and it
+  updates everywhere in the site (buttons, text, borders, gradients, etc.)
+  Never hardcode hex colors in components — use these tokens instead.
+  ---------------------------------------------------------------------------
+*/ 
+:root {
+  /* Brand */
+  --color-brand: #3295B6;
+  --color-brand-light: #3295B6;
+  --color-brand-dark: #6DC072;
+
+  /* Light theme (default) */
+  --background: #ffffff;
+  --background-alt: #f6f6f8;
+  --foreground: #0b0b0d;
+  --foreground-muted: #55565f;
+  --border-color: rgba(11, 11, 13, 0.1);
+  --surface: #ffffff;
+}
+
+:root[data-theme="dark"] {
+  /* Dark theme */
+  --background: #050506;
+  --background-alt: #0c0c0f;
+  --foreground: #f5f5f7;
+  --foreground-muted: #a1a1aa;
+  --border-color: rgba(255, 255, 255, 0.12);
+  --surface: #0f0f13;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --background: #050506;
+    --background-alt: #0c0c0f;
+    --foreground: #f5f5f7;
+    --foreground-muted: #a1a1aa;
+    --border-color: rgba(255, 255, 255, 0.12);
+    --surface: #0f0f13;
+  }
+}
+
+@theme inline {
+  --color-brand: var(--color-brand);
+  --color-brand-light: var(--color-brand-light);
+  --color-brand-dark: var(--color-brand-dark);
+
+  --color-background: var(--background);
+  --color-background-alt: var(--background-alt);
+  --color-foreground: var(--foreground);
+  --color-foreground-muted: var(--foreground-muted);
+  --color-border: var(--border-color);
+  --color-surface: var(--surface);
+
+  --font-sans: var(--font-space-grotesk);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-space-grotesk), Arial, Helvetica, sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
