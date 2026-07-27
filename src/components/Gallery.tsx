@@ -7,10 +7,12 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
+// Placeholder frames — replace `src` with real site photography as it becomes
+// available; the labels describe the work type, not a specific named project.
 const IMAGES = [
-  { src: "/images/menus/1.jpg", label: "Spot Shadow", tag: "Post Production, B&W" },
-  { src: "/images/menus/2.jpg", label: "Soft Focus", tag: "Post Production, Color" },
-  { src: "/images/menus/3.jpg", label: "Golden Hour", tag: "On Location" },
+  { src: "/images/services/Mechanical.jpg", label: "Maintenance Works", tag: "Electrical & Mechanical" },
+  { src: "/images/services/Construction.jpg", label: "Civil & Construction", tag: "Structural & Groundworks" },
+  { src: "/images/services/Manpower.jpg", label: "Manpower Support", tag: "Skilled Trades On Site" },
 ];
 
 // Two resting spots, left and right, with clear space between them — small,
@@ -27,16 +29,10 @@ export default function Gallery() {
   const sectionRef = useRef<HTMLElement>(null);
   const frameRefs = useRef<HTMLDivElement[]>([]);
   const captionRefs = useRef<HTMLDivElement[]>([]);
-  const smokeRef = useRef<HTMLVideoElement>(null);
 
   useLayoutEffect(() => {
     const section = sectionRef.current;
-    const smoke = smokeRef.current;
     if (!section) return;
-
-    // Pause the smoke video immediately — its currentTime will be driven
-    // entirely by scroll progress instead of playing on its own timeline.
-    smoke?.pause();
 
     const ctx = gsap.context(() => {
       const frames = frameRefs.current;
@@ -75,11 +71,6 @@ export default function Gallery() {
           scrub: 1,
           anticipatePin: 1,
           invalidateOnRefresh: true,
-          onUpdate: (self) => {
-            if (smoke && smoke.duration) {
-              smoke.currentTime = self.progress * smoke.duration;
-            }
-          },
         },
       });
 
@@ -167,30 +158,20 @@ export default function Gallery() {
   return (
     <section
       ref={sectionRef}
-      className="relative flex h-[100vh] w-full flex-col overflow-hidden bg-[#050506] text-foreground"
+      className="relative flex h-[100vh] w-full flex-col overflow-hidden bg-background-alt text-foreground"
     >
-      {/* Smoke backdrop — scrubbed to scroll progress, not autoplaying */}
-      <video
-        ref={smokeRef}
-        className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-60 mix-blend-screen"
-        src="/images/menus/smokeGalleryBg.mp4"
-        muted
-        playsInline
-        preload="auto"
-        aria-hidden="true"
-      />
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-[#050506] via-transparent to-[#050506]" />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-background-alt via-transparent to-background-alt" />
 
       {/* Heading — reserves its own space at the top so the image track
           below never overlaps it, regardless of viewport height. */}
       <div className="relative z-40 shrink-0 px-6 pt-24 text-center sm:pt-28 md:pt-32">
-        <p className="mb-4 flex items-center justify-center gap-3 text-xs font-semibold uppercase tracking-[0.4em] text-brand-light">
-          <span className="h-px w-8 bg-brand-light/70" />
-          Our Portfolio
-          <span className="h-px w-8 bg-brand-light/70" />
+        <p className="mb-4 flex items-center justify-center gap-3 text-xs font-semibold uppercase tracking-[0.4em] text-brand-accent">
+          <span className="h-px w-8 bg-brand-accent/60" />
+          Our Work
+          <span className="h-px w-8 bg-brand-accent/60" />
         </p>
-        <h2 className="text-3xl font-bold uppercase tracking-tight text-white sm:text-4xl md:text-5xl">
-          Menus <span className="text-brand">Printed and Designed</span> by Us
+        <h2 className="text-3xl font-bold uppercase tracking-tight text-foreground sm:text-4xl md:text-5xl">
+          Delivered <span className="text-brand">On Site</span>
         </h2>
       </div>
 
@@ -228,7 +209,7 @@ export default function Gallery() {
                 }}
                 className="absolute -top-12 left-0 whitespace-nowrap text-left"
               >
-                <p className="text-sm font-semibold tracking-wide text-brand-light">{img.label}</p>
+                <p className="text-sm font-semibold tracking-wide text-brand-accent">{img.label}</p>
                 <p className="text-xs text-foreground-muted">{img.tag}</p>
               </div>
             </div>

@@ -4,7 +4,7 @@ import ServicesPageContent from "@/components/pages/ServicesPageContent";
 export const metadata: Metadata = {
   title: "Services",
   description:
-    "Printing, SEO & digital marketing, social media, app development, web design, brand development, software and call center services — all under one roof.",
+    "Comprehensive solutions designed to enhance operational efficiency and improve reliability — electrical and mechanical maintenance, chemical services, civil works, construction and skilled manpower support.",
 };
 
 export default function ServicesPage() {

@@ -2,22 +2,32 @@
  * Company-wide data. Update here and it changes everywhere on the site.
  */
 export const SITE = {
-  name: "WebCraft Consulting",
-  phone: { label: "(718) 635-4332", href: "tel:+17186354332" },
-  whatsapp: { label: "(929) 622-0807", href: "https://wa.me/19296220807" },
-  emails: [
-    { label: "info@webcraftcons.com", href: "mailto:info@webcraftcons.com" },
-    { label: "sales@webcraftcons.com", href: "mailto:sales@webcraftcons.com" },
-  ],
+  name: "VEMOOSC",
+  legalName:
+    "Vision Excellence Maintenance & Operations Oil Services Company",
+  tagline: "Built on Vision. Driven by Excellence.",
+  descriptor:
+    "UAE-based engineering and industrial solutions provider serving the energy, infrastructure and industrial sectors.",
+  // Phone/WhatsApp are not published yet. Leave `null` and the UI will hide
+  // those entries; fill them in here and they reappear site-wide.
+  phone: null as { label: string; href: string } | null,
+  whatsapp: null as { label: string; href: string } | null,
+  emails: [{ label: "info@vemoosc.com", href: "mailto:info@vemoosc.com" }],
   address: {
-    label: "35 Merritt Blvd STE 2000, Fishkill, NY 12524 USA",
-    href: "https://maps.google.com/?q=35+Merritt+Blvd+STE+2000+Fishkill+NY+12524",
+    label:
+      "Al Dhafra Region, Ghayathi, New Ghayathi Industrial T1361, Office # 5, Abu Dhabi, UAE",
+    short: "New Ghayathi Industrial T1361, Office # 5",
+    city: "Abu Dhabi, UAE",
+    href: "https://maps.google.com/?q=New+Ghayathi+Industrial+Area+Ghayathi+Al+Dhafra+Abu+Dhabi+UAE",
   },
+  // Social profiles. Add entries in this shape to switch more on site-wide.
   socials: [
-    { label: "Facebook", href: "https://www.facebook.com/webcraftcons", icon: "ri-facebook-fill" },
-    { label: "Instagram", href: "https://www.instagram.com/webcraftcons/", icon: "ri-instagram-line" },
-    { label: "LinkedIn", href: "#", icon: "ri-linkedin-fill" },
-  ],
+    {
+      label: "LinkedIn",
+      href: "https://www.linkedin.com/company/vemoosc/",
+      icon: "ri-linkedin-fill",
+    },
+  ] as ReadonlyArray<{ label: string; href: string; icon: string }>,
 } as const;
 
 export const NAV_LINKS = [
@@ -25,129 +35,98 @@ export const NAV_LINKS = [
   { label: "About Us", href: "/about" },
   { label: "Services", href: "/services" },
   { label: "Portfolio", href: "/portfolio" },
-  { label: "News & Blogs", href: "/blog" },
   { label: "Contact Us", href: "/contact" },
 ] as const;
 
 export const SERVICES = [
   {
-    slug: "printing",
+    slug: "electrical-maintenance",
     id: "01",
-    title: "Printing Services",
-    tagline: "Premium print, packaging & branded merchandise.",
+    title: "Electrical Maintenance",
+    tagline: "Power systems kept safe, compliant and running.",
     description:
-      "Premium print production for brochures, banners, business cards, packaging and branded merchandise — brought to life with sharp design and quality materials.",
+      "Preventive and corrective electrical maintenance for industrial and commercial facilities — from LV distribution and motor control centres to lighting, cabling and emergency systems.",
     features: [
-      "Large-format & commercial printing",
-      "Branded packaging & merchandise",
-      "Design-to-print in-house workflow",
+      "LV/HV panel & switchgear maintenance",
+      "Motor control centres & drives",
+      "Cable installation, testing & termination",
     ],
-    image: "/images/services/Printing.jpeg",
-    color: "#2a0a10",
+    image: "/images/services/Electrical.jpg",
+    color: "#0d1b24",
   },
   {
-    slug: "seo",
+    slug: "mechanical-maintenance",
     id: "02",
-    title: "SEO & Digital Marketing",
-    tagline: "Data-driven strategies that grow your reach.",
+    title: "Mechanical Maintenance",
+    tagline: "Rotating and static equipment at full uptime.",
     description:
-      "Technical SEO, content and paid acquisition that put your brand in front of the right audience — and keep it there.",
+      "Planned shutdown support, breakdown response and routine servicing for pumps, compressors, piping, valves and static equipment across plant and utility systems.",
     features: [
-      "Technical & on-page SEO audits",
-      "Targeted paid acquisition (Meta/Google)",
-      "Performance tracking & ROI reporting",
+      "Pumps, compressors & rotating equipment",
+      "Piping, valves & static equipment",
+      "Shutdown, turnaround & breakdown support",
     ],
-    image: "/images/services/Seo.jpeg",
-    color: "#1c0a0d",
+    image: "/images/services/Mechanical.jpg",
+    color: "#111c22",
   },
   {
-    slug: "social-media",
+    slug: "chemical-services",
     id: "03",
-    title: "Social Media Marketing",
-    tagline: "Content and campaigns that build real engagement.",
+    title: "Chemical Services",
+    tagline: "Cleaning, treatment and specialist handling.",
     description:
-      "Social growth, community management and creative production that keeps your brand top of mind.",
+      "Industrial chemical cleaning, descaling and treatment programmes delivered under strict handling, containment and HSE controls.",
     features: [
-      "Social growth & management",
-      "Creative content production",
-      "Community engagement & analytics",
+      "Chemical cleaning & descaling",
+      "Water treatment & dosing support",
+      "Controlled handling & safe disposal",
     ],
-    image: "/images/services/Marketing.jpeg",
-    color: "#24090e",
+    image: "/images/services/Chemicalservices.jpg",
+    color: "#0f1d1a",
   },
   {
-    slug: "app-development",
+    slug: "civil-works",
     id: "04",
-    title: "App Development",
-    tagline: "Native and cross-platform apps built to scale.",
+    title: "Civil Works",
+    tagline: "Groundworks, concrete and structural repair.",
     description:
-      "Apps engineered with modern stacks, clean architecture and a focus on real user experience.",
+      "Civil packages covering foundations, concrete works, structural repair, road and surface works, and site preparation for industrial facilities.",
     features: [
-      "iOS, Android & cross-platform apps",
-      "API integrations & cloud deployment",
-      "Ongoing support & optimisation",
+      "Foundations, concrete & structural repair",
+      "Roads, surfacing & site preparation",
+      "Fabrication, fencing & finishing works",
     ],
-    image: "/images/services/AppDev.jpeg",
-    color: "#170709",
+    image: "/images/services/Civilworks.jpg",
+    color: "#141b20",
   },
   {
-    slug: "web-design",
+    slug: "construction",
     id: "05",
-    title: "Responsive Web Design",
-    tagline: "Fast, modern websites for every device.",
+    title: "Construction",
+    tagline: "Multi-discipline delivery, start to handover.",
     description:
-      "Websites designed to convert visitors and reflect the quality of your brand, on every screen size.",
+      "End-to-end construction of industrial and commercial works — planned, resourced and executed to programme with coordinated civil, mechanical and electrical scopes.",
     features: [
-      "Conversion-optimised layouts",
-      "Next.js & React development",
-      "Accessible, mobile-first design",
+      "Industrial & commercial build packages",
+      "Multi-discipline site coordination",
+      "Programme, QA/QC & handover support",
     ],
-    image: "/images/services/WebDev.jpeg",
-    color: "#220a0f",
+    image: "/images/services/Construction.jpg",
+    color: "#101a22",
   },
   {
-    slug: "brand-development",
+    slug: "manpower-support",
     id: "06",
-    title: "Brand Development",
-    tagline: "Identity systems that make you unforgettable.",
+    title: "Manpower Support",
+    tagline: "Skilled trades, mobilised when you need them.",
     description:
-      "From logo and voice to a complete visual language that sets you apart from everyone else.",
+      "Qualified technicians, tradesmen and support crews supplied on short- or long-term assignment, inducted and ready to work to your site's standards.",
     features: [
-      "Logo & visual identity systems",
-      "Brand voice & messaging",
-      "Guidelines & asset libraries",
+      "Skilled trades & technicians",
+      "Short- and long-term assignment",
+      "Site-inducted, HSE-compliant crews",
     ],
-    image: "/images/services/Branding.jpeg",
-    color: "#1d0709",
-  },
-  {
-    slug: "software-development",
-    id: "07",
-    title: "Software Development",
-    tagline: "Custom platforms engineered for performance.",
-    description:
-      "Custom CRMs, ERPs, client portals and SaaS products built with modern stacks and clean architecture.",
-    features: [
-      "Custom CRM, ERP & SaaS platforms",
-      "API integrations & cloud deployment",
-      "Scalable, maintainable codebases",
-    ],
-    image: "/images/services/AppDev.jpeg",
-    color: "#1a0a0d",
-  },
-  {
-    slug: "call-center",
-    id: "08",
-    title: "Call Center Services",
-    tagline: "Inbound and outbound support that converts.",
-    description:
-      "Professional call solutions built to convert, retain and support your customers around the clock.",
-    features: [
-      "24/7 inbound customer support",
-      "Outbound sales & lead generation",
-      "Dedicated agent teams & reporting",
-    ],
-    image: "/images/services/Marketing.jpeg",
-    color: "#210a0e",
+    image: "/images/services/Manpower.jpg",
+    color: "#131a1f",
   },
 ] as const;

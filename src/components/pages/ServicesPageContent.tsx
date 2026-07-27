@@ -13,10 +13,10 @@ import Services from "../Services";
 gsap.registerPlugin(ScrollTrigger);
 
 const PROCESS = [
-  { step: "01", title: "Discover", body: "We learn your business, market and goals before proposing anything." },
-  { step: "02", title: "Strategize", body: "We shape a bold, tailored plan built around measurable outcomes." },
-  { step: "03", title: "Execute", body: "Our team delivers — design, build, launch and iterate at pace." },
-  { step: "04", title: "Amplify", body: "We track performance and scale what works to keep growth compounding." },
+  { step: "01", title: "Enquire", body: "Send us your scope, drawings or maintenance schedule and we review the requirement." },
+  { step: "02", title: "Survey & Quote", body: "We assess the site, confirm the works and return a clear, itemised proposal." },
+  { step: "03", title: "Mobilise", body: "Crews, permits, method statements and risk assessments are put in place before work starts." },
+  { step: "04", title: "Execute & Hand Over", body: "Works are completed to programme and specification, then documented at handover." },
 ];
 
 export default function ServicesPageContent() {
@@ -45,10 +45,10 @@ export default function ServicesPageContent() {
   return (
     <div ref={rootRef}>
       <PageHeader
-        eyebrow="Unmatched Expertise"
+        eyebrow="Comprehensive Solutions"
         title="Our"
         accent="Services"
-        intro="With WebCraft Consulting, you're gaining a partner dedicated to amplifying your business and driving tangible results — across print, digital, and software."
+        intro="Comprehensive solutions designed to enhance operational efficiency, improve reliability, and support the evolving needs of our clients across the energy, infrastructure and industrial sectors."
       />
 
       <Services/>
@@ -67,14 +67,16 @@ export default function ServicesPageContent() {
                   className="relative aspect-[16/10] w-full overflow-hidden"
                   style={{ background: service.color }}
                 >
+                  {/* Placeholder imagery — replace with real project
+                      photography at these paths. */}
                   <Image
                     src={service.image}
-                    alt={`${service.title} — WebCraft Consulting`}
+                    alt=""
                     fill
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                     className="object-cover text-transparent transition-transform duration-700 group-hover:scale-105"
                   />
-                  <div className="absolute inset-0 bg-black/40" />
+                  <div className="absolute inset-0 bg-black/25" />
                   <span className="absolute left-6 top-6 text-sm font-semibold tracking-[0.3em] text-white/70">
                     {service.id}
                   </span>
@@ -99,9 +101,9 @@ export default function ServicesPageContent() {
 
                   <Link
                     href="/contact"
-                    className="mt-7 inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-wide text-brand-light"
+                    className="mt-7 inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-wide text-brand-accent"
                   >
-                    Get a Quote
+                    Request a Quote
                     <i className="ri-arrow-right-line transition-transform group-hover:translate-x-1" aria-hidden="true" />
                   </Link>
                 </div>
@@ -115,8 +117,8 @@ export default function ServicesPageContent() {
       <section className="border-t border-border bg-background-alt py-20 md:py-28">
         <Container>
           <div className="rv max-w-2xl">
-            <p className="mb-5 flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.4em] text-brand-light">
-              <span className="h-px w-8 bg-brand-light/70" />
+            <p className="mb-5 flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.4em] text-brand-accent">
+              <span className="h-px w-8 bg-brand-accent/60" />
               How We Work
             </p>
             <h2 className="text-3xl font-bold uppercase tracking-tight sm:text-4xl md:text-5xl">

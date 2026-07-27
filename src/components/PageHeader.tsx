@@ -37,8 +37,8 @@ export default function PageHeader({ eyebrow, title, accent, intro }: PageHeader
       className="relative overflow-hidden border-b border-border bg-background pb-16 pt-32 md:pb-24 md:pt-44"
     >
       <Container>
-        <p className="ph-eyebrow mb-5 flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.4em] text-brand-light">
-          <span className="h-px w-8 bg-brand-light/70" />
+        <p className="ph-eyebrow mb-5 flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.4em] text-brand-accent">
+          <span className="h-px w-8 bg-brand-accent/60" />
           {eyebrow}
         </p>
 

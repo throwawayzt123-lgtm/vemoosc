@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -8,9 +9,22 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 const STATS = [
-  { value: "500+", label: "Projects" },
-  { value: "6yrs", label: "In Practice" },
-  { value: "99%", label: "Retained" },
+  { value: "05", label: "Core Disciplines" },
+  { value: "HSE", label: "Led Delivery" },
+  { value: "24/7", label: "Site Callout" },
+];
+
+const HIGHLIGHTS = [
+  {
+    icon: "ri-focus-3-line",
+    title: "One Accountable Team",
+    body: "Every discipline coordinated under a single point of ownership.",
+  },
+  {
+    icon: "ri-shield-check-line",
+    title: "Safe by Standard",
+    body: "Quality-driven execution to the standards our clients operate by.",
+  },
 ];
 
 export default function About() {
@@ -18,27 +32,29 @@ export default function About() {
 
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.set(".about-reveal", { opacity: 0, y: 32 });
+      gsap.set(".about-reveal", { opacity: 0, y: 34 });
       gsap.set(".about-eyebrow", { opacity: 0 });
-      gsap.set(".about-img-back", { opacity: 0, scale: 1.08 });
-      gsap.set(".about-img-front", { opacity: 0, y: 40, scale: 1.04 });
-      gsap.set(".about-stat-strip", { opacity: 0, y: 30 });
+      gsap.set(".about-img-back", { opacity: 0, scale: 1.1 });
+      gsap.set(".about-img-front", { opacity: 0, y: 48, scale: 1.05 });
+      gsap.set(".about-badge", { opacity: 0, scale: 0.8, rotate: -8 });
+      gsap.set(".about-stat", { opacity: 0, y: 24 });
 
       gsap
         .timeline({
-          scrollTrigger: { trigger: rootRef.current, start: "top 75%" },
+          scrollTrigger: { trigger: rootRef.current, start: "top 72%" },
           defaults: { ease: "power3.out" },
         })
         .to(".about-eyebrow", { opacity: 1, duration: 1 }, 0)
         .to(".about-img-back", { opacity: 1, scale: 1, duration: 1.4, ease: "power2.out" }, 0.1)
-        .to(".about-reveal", { opacity: 1, y: 0, duration: 0.9, stagger: 0.12 }, 0.25)
+        .to(".about-reveal", { opacity: 1, y: 0, duration: 0.9, stagger: 0.1 }, 0.25)
         .to(".about-img-front", { opacity: 1, y: 0, scale: 1, duration: 1.2, ease: "power2.out" }, 0.4)
-        .to(".about-stat-strip", { opacity: 1, y: 0, duration: 0.9 }, 0.6);
+        .to(".about-badge", { opacity: 1, scale: 1, rotate: 0, duration: 0.9, ease: "back.out(1.6)" }, 0.7)
+        .to(".about-stat", { opacity: 1, y: 0, duration: 0.7, stagger: 0.1 }, 0.7);
 
       // Slow ambient drift on the back image while the section is in view.
       gsap.to(".about-img-back img", {
-        scale: 1.08,
-        duration: 10,
+        scale: 1.1,
+        duration: 12,
         ease: "sine.inOut",
         yoyo: true,
         repeat: -1,
@@ -52,85 +68,126 @@ export default function About() {
     <section
       ref={rootRef}
       id="about"
-      className="relative overflow-hidden bg-background text-white"
+      className="relative overflow-hidden bg-background py-24 text-foreground md:py-32"
     >
       {/* Seam — dissolves in from the Hero above */}
-      <div className="pointer-events-none absolute inset-x-0 top-0 z-10 h-32 bg-gradient-to-b from-black/60 to-transparent" />
+      <div className="pointer-events-none absolute inset-x-0 top-0 z-10 h-32 bg-gradient-to-b from-seam-strong to-transparent" />
 
-      <div className="relative grid grid-cols-1 lg:grid-cols-2">
+      {/* Ambient brand glow + oversized watermark word for depth */}
+      <div className="pointer-events-none absolute -left-40 top-1/3 h-[36rem] w-[36rem] rounded-full bg-brand/10 blur-[130px]" />
+      <span
+        aria-hidden="true"
+        className="pointer-events-none absolute -right-6 top-10 select-none text-[22vw] font-bold uppercase leading-none tracking-tighter text-foreground/[0.03] md:text-[16vw]"
+      >
+        Vemoosc
+      </span>
+
+      <div className="relative mx-auto grid max-w-7xl grid-cols-1 items-center gap-14 px-6 sm:px-10 lg:grid-cols-[1fr_1.05fr] lg:gap-20 md:px-14">
         {/* Left: copy */}
-        <div className="relative flex flex-col justify-center px-6 py-16 sm:px-10 md:px-14 md:py-20">
-          {/* Rotated vertical eyebrow, pinned to the section's left edge */}
-          <span
-            className="about-eyebrow absolute left-4 top-1/2 hidden -translate-y-1/2 -rotate-180 text-xs font-semibold uppercase tracking-[0.5em] text-white/50 sm:left-6 md:block"
-            style={{ writingMode: "vertical-rl" }}
-          >
-            Our Story
-          </span>
+        <div className="relative">
+          <p className="about-eyebrow mb-7 inline-flex items-center gap-3 rounded-full border border-border bg-surface/60 px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.35em] text-brand-accent backdrop-blur-sm">
+            <span className="h-1.5 w-1.5 rounded-full bg-brand" />
+            Built on Vision. Driven by Excellence.
+          </p>
 
-          <div className="max-w-xl md:pl-10">
-            <p className="about-reveal mb-7 flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.4em] text-brand-light">
-              <span className="h-px w-8 bg-brand-light/70" />
-              Business Consulting, Amplified
+          <h2 className="about-reveal text-4xl font-light uppercase leading-[1.08] tracking-tight sm:text-5xl md:text-6xl">
+            Engineering
+            <br />
+            <span className="bg-gradient-to-r from-brand to-brand-light bg-clip-text font-bold text-transparent">
+              Solutions
+            </span>{" "}
+            That
+            <br />
+            Endure.
+          </h2>
+
+          <div className="about-reveal mt-8 space-y-5 text-base leading-relaxed text-foreground-muted md:text-lg">
+            <p>
+              VEMOOSC is a UAE-based engineering and industrial solutions
+              provider committed to delivering reliable, safe and innovative
+              services across the energy, infrastructure and industrial
+              sectors.
             </p>
-
-            <h2 className="about-reveal text-4xl font-light uppercase leading-[1.15] tracking-tight sm:text-5xl md:text-6xl">
-              Sharing the
-              <br />
-              <span className="font-bold text-brand">Spirit</span> of
-              <br />
-              Success
-            </h2>
-
-            <div className="about-reveal mt-9 space-y-5 text-base leading-relaxed text-white/60 md:text-lg">
-              <p>
-                Success is not something to be forced. It is something to be
-                built. Guided by bold strategy and honest craft, WebCraft
-                Consulting opens a clear path back to what matters&mdash;work
-                that reflects who you are, and growth that lasts.
-              </p>
-            </div>
-
-            <a
-              href="#services"
-              className="about-reveal group mt-11 inline-flex items-center gap-4 text-sm uppercase tracking-[0.2em] text-white/80 transition hover:text-white"
-            >
-              <span className="h-px w-10 bg-white/40 transition-all duration-300 group-hover:w-16 group-hover:bg-brand" />
-              View Our Services
-            </a>
+            <p>
+              Through technical expertise, quality-driven execution and a
+              commitment to excellence, we deliver value that extends beyond
+              every project &mdash; helping build a more efficient and
+              sustainable future.
+            </p>
           </div>
+
+          {/* Two compact highlight rows for texture */}
+          <div className="about-reveal mt-9 grid gap-4 sm:grid-cols-2">
+            {HIGHLIGHTS.map((h) => (
+              <div
+                key={h.title}
+                className="group flex gap-4 rounded-2xl border border-border bg-surface/70 p-4 backdrop-blur-sm transition hover:border-brand/40"
+              >
+                <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-brand/12 text-lg text-brand transition group-hover:bg-brand group-hover:text-white">
+                  <i className={h.icon} aria-hidden="true" />
+                </span>
+                <div>
+                  <p className="text-sm font-bold">{h.title}</p>
+                  <p className="mt-1 text-xs leading-relaxed text-foreground-muted">
+                    {h.body}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <Link
+            href="/services"
+            className="about-reveal group mt-10 inline-flex items-center gap-3 rounded-full bg-brand px-7 py-3.5 text-sm font-semibold text-white shadow-[0_10px_30px_-10px_var(--color-brand)] transition hover:-translate-y-0.5 hover:bg-brand-dark"
+          >
+            View Our Services
+            <i className="ri-arrow-right-line transition-transform group-hover:translate-x-1" aria-hidden="true" />
+          </Link>
         </div>
 
         {/* Right: layered photography */}
-        <div className="relative h-[70vh] w-full lg:h-auto lg:min-h-[680px]">
-          <div className="about-img-back absolute inset-0">
+        <div className="relative h-[62vh] min-h-[520px] w-full lg:h-[640px]">
+          {/* Back plate — main image with a soft brand frame glow */}
+          <div className="about-img-back absolute inset-4 overflow-hidden rounded-[2rem] shadow-[0_40px_100px_-30px_rgba(0,0,0,0.5)] sm:inset-8">
             <Image
-              src="/images/services/Branding.jpeg"
-              alt="WebCraft Consulting — our craft"
+              src="/images/services/Construction.jpg"
+              alt=""
               fill
               sizes="(max-width: 1024px) 100vw, 50vw"
               className="object-cover"
               priority
             />
-            <div className="absolute inset-0 bg-black/30" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-black/10" />
+            <div className="absolute inset-0 rounded-[2rem] ring-1 ring-inset ring-white/10" />
           </div>
 
-          <div className="about-img-front absolute bottom-24 left-6 aspect-[4/5] w-[52%] max-w-xs overflow-hidden rounded-sm shadow-[0_30px_80px_-20px_rgba(0,0,0,0.8)] sm:left-10 md:bottom-28 md:left-14">
+          {/* Front card — smaller inset image, overlapping */}
+          <div className="about-img-front absolute -bottom-2 left-0 aspect-[4/5] w-[46%] max-w-[15rem] overflow-hidden rounded-[1.5rem] border-4 border-background shadow-[0_30px_70px_-20px_rgba(0,0,0,0.7)]">
             <Image
-              src="/images/services/WebDev.jpeg"
-              alt="WebCraft Consulting — our work"
+              src="/images/services/Electrical.jpg"
+              alt=""
               fill
-              sizes="(max-width: 1024px) 50vw, 25vw"
+              sizes="(max-width: 1024px) 46vw, 15rem"
               className="object-cover"
             />
           </div>
 
-          {/* Floating stat strip, overlapping the bottom edge of the photos */}
-          <div className="about-stat-strip absolute -bottom-px left-1/2 z-10 flex w-[min(90%,420px)] -translate-x-1/2 divide-x divide-white/10 rounded-t-xl border border-b-0 border-white/10 bg-[#0c0d0b]/95 shadow-[0_-20px_60px_-20px_rgba(0,0,0,0.6)] backdrop-blur-md">
+          {/* Floating "years / established" style badge, top-right */}
+          <div className="about-badge absolute right-2 top-2 flex flex-col items-center rounded-2xl border border-border bg-elevated px-5 py-4 text-center shadow-[0_20px_50px_-20px_rgba(0,0,0,0.5)] backdrop-blur-md sm:right-6 sm:top-6">
+            <i className="ri-award-line text-2xl text-brand" aria-hidden="true" />
+            <p className="mt-1.5 text-[10px] font-semibold uppercase leading-tight tracking-[0.15em] text-foreground-muted">
+              Vision
+              <br />
+              &amp; Excellence
+            </p>
+          </div>
+
+          {/* Stat strip — floating pill row at the bottom edge */}
+          <div className="absolute -bottom-6 right-0 flex divide-x divide-border overflow-hidden rounded-2xl border border-border bg-elevated shadow-[0_20px_60px_-20px_rgba(0,0,0,0.45)] backdrop-blur-md sm:right-4">
             {STATS.map((stat) => (
-              <div key={stat.label} className="flex-1 px-4 py-6 text-center">
-                <div className="text-2xl font-bold text-brand-light md:text-3xl">{stat.value}</div>
-                <div className="mt-1.5 text-[10px] uppercase tracking-[0.15em] text-white/50">
+              <div key={stat.label} className="about-stat px-4 py-4 text-center sm:px-6 sm:py-5">
+                <div className="text-xl font-bold text-brand-accent sm:text-2xl">{stat.value}</div>
+                <div className="mt-1 text-[9px] uppercase tracking-[0.12em] text-foreground-muted sm:text-[10px]">
                   {stat.label}
                 </div>
               </div>

@@ -1,8 +1,10 @@
 "use client";
 
+import Link from "next/link";
 import { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { SITE } from "@/lib/site";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -32,41 +34,40 @@ export default function CtaBand() {
       {/* Seam — dissolves in from Testimonials above */}
       <div className="pointer-events-none absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-background-alt to-transparent" />
       <div className="relative z-10 mx-auto max-w-4xl px-6 text-center md:px-14">
-        <p className="cta-reveal mb-6 flex items-center justify-center gap-3 text-xs font-semibold uppercase tracking-[0.4em] text-brand-light">
-          <span className="h-px w-8 bg-brand-light/70" />
-          Let&rsquo;s Work Together
-          <span className="h-px w-8 bg-brand-light/70" />
+        <p className="cta-reveal mb-6 flex items-center justify-center gap-3 text-xs font-semibold uppercase tracking-[0.4em] text-brand-accent">
+          <span className="h-px w-8 bg-brand-accent/60" />
+          Start Your Project
+          <span className="h-px w-8 bg-brand-accent/60" />
         </p>
 
         <h2 className="cta-reveal text-4xl font-bold uppercase leading-[1.05] tracking-tight sm:text-5xl md:text-6xl">
-          Let&rsquo;s Craft Your Future
+          Building a More Efficient
           <br />
-          <span className="text-brand">Together</span>
+          <span className="text-brand">Future</span>
         </h2>
 
         <p className="cta-reveal mx-auto mt-6 max-w-xl text-base leading-relaxed text-foreground-muted md:text-lg">
-          Ready to amplify your business? Reach out today and let&rsquo;s build a
-          bold strategy that drives real, measurable results.
+          Send us your scope, drawings or maintenance schedule and our team will
+          come back to you with a clear proposal.
         </p>
 
         <div className="cta-reveal mt-10 flex flex-wrap items-center justify-center gap-5">
-          <a
-            href="tel:+17186354332"
+          <Link
+            href="/contact"
             className="group inline-flex items-center gap-2 rounded-full bg-brand px-8 py-4 text-sm font-semibold text-white transition hover:bg-brand-dark"
           >
-            <i className="ri-phone-fill" aria-hidden="true" />
-            Call (718) 635-4332
+            Request a Quote
             <i
               className="ri-arrow-right-line transition-transform duration-300 group-hover:translate-x-1"
               aria-hidden="true"
             />
-          </a>
+          </Link>
           <a
-            href="mailto:info@webcraftcons.com"
+            href={SITE.emails[0].href}
             className="inline-flex items-center gap-2 rounded-full border border-border px-8 py-4 text-sm font-semibold text-foreground transition hover:border-brand hover:text-brand"
           >
             <i className="ri-mail-fill" aria-hidden="true" />
-            info@webcraftcons.com
+            {SITE.emails[0].label}
           </a>
         </div>
       </div>

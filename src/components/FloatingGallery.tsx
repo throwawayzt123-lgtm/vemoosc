@@ -12,15 +12,15 @@ gsap.registerPlugin(ScrollTrigger);
 // rather than a grid. `delay` staggers each card's ambient drift so they
 // never move in sync.
 const CARDS = [
-  { src: "/images/menus/1.jpg", x: -34, y: -22, w: 15, rotate: -8, z: 10, delay: 0 },
-  { src: "/images/menus/2.jpg", x: -22, y: -30, w: 9, rotate: 6, z: 6, delay: 0.6 },
-  { src: "/images/menus/3.jpg", x: -12, y: 4, w: 17, rotate: -4, z: 14, delay: 1.1 },
-  { src: "/images/services/Printing.jpeg", x: -26, y: 26, w: 11, rotate: 10, z: 8, delay: 0.3 },
-  { src: "/images/services/Seo.jpeg", x: 10, y: -26, w: 16, rotate: 5, z: 12, delay: 0.8 },
-  { src: "/images/services/Marketing.jpeg", x: 4, y: 6, w: 9, rotate: -12, z: 5, delay: 1.4 },
-  { src: "/images/services/AppDev.jpeg", x: 24, y: -6, w: 12, rotate: 8, z: 9, delay: 0.5 },
-  { src: "/images/services/WebDev.jpeg", x: 34, y: 20, w: 14, rotate: -6, z: 13, delay: 1.0 },
-  { src: "/images/services/Branding.jpeg", x: 20, y: 30, w: 8, rotate: 12, z: 7, delay: 0.2 },
+  { src: "/images/services/Electrical.jpg", x: -34, y: -22, w: 15, rotate: -8, z: 10, delay: 0 },
+  { src: "/images/services/Mechanical.jpg", x: -22, y: -30, w: 9, rotate: 6, z: 6, delay: 0.6 },
+  { src: "/images/services/Construction.jpg", x: -12, y: 4, w: 17, rotate: -4, z: 14, delay: 1.1 },
+  { src: "/images/services/Chemicalservices.jpg", x: -26, y: 26, w: 11, rotate: 10, z: 8, delay: 0.3 },
+  { src: "/images/services/Civilworks.jpg", x: 10, y: -26, w: 16, rotate: 5, z: 12, delay: 0.8 },
+  { src: "/images/services/Manpower.jpg", x: 4, y: 6, w: 9, rotate: -12, z: 5, delay: 1.4 },
+  { src: "/images/services/Electrical.jpg", x: 24, y: -6, w: 12, rotate: 8, z: 9, delay: 0.5 },
+  { src: "/images/services/Construction.jpg", x: 34, y: 20, w: 14, rotate: -6, z: 13, delay: 1.0 },
+  { src: "/images/services/Civilworks.jpg", x: 20, y: 30, w: 8, rotate: 12, z: 7, delay: 0.2 },
 ];
 
 export default function FloatingGallery() {
@@ -86,17 +86,17 @@ export default function FloatingGallery() {
   return (
     <section
       ref={rootRef}
-      className="relative overflow-hidden bg-gradient-to-br from-[#f4f6fb] via-[#eef1f9] to-[#e6ebf7] py-28 md:py-36"
+      className="relative overflow-hidden bg-background-alt py-28 md:py-36"
       style={{ perspective: "1800px" }}
     >
       <div className="relative z-10 mx-auto max-w-3xl px-6 text-center">
         <p className="floating-reveal mb-6 flex items-center justify-center gap-3 text-xs font-semibold uppercase tracking-[0.4em] text-brand">
           <span className="h-px w-8 bg-brand/60" />
-          A Glimpse of Our Craft
+          Capability at a Glance
           <span className="h-px w-8 bg-brand/60" />
         </p>
-        <h2 className="floating-reveal text-4xl font-bold uppercase tracking-tight text-[#0b0c10] sm:text-5xl md:text-6xl">
-          Work That <span className="text-brand">Speaks</span>
+        <h2 className="floating-reveal text-4xl font-bold uppercase tracking-tight text-foreground sm:text-5xl md:text-6xl">
+          Across Every <span className="text-brand">Discipline</span>
         </h2>
       </div>
 

@@ -4,6 +4,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import SmoothScroll from "@/components/SmoothScroll";
 import CursorFollower from "@/components/CursorFollower";
+import { ThemeProvider, ThemeScript } from "@/components/ThemeProvider";
 import "./globals.css";
 
 const spaceGrotesk = Space_Grotesk({
@@ -14,33 +15,37 @@ const spaceGrotesk = Space_Grotesk({
 
 export const metadata: Metadata = {
   title: {
-    default: "WebCraft Consulting | Business Consulting, Amplified",
-    template: "%s | WebCraft Consulting",
+    default: "VEMOOSC | Built on Vision. Driven by Excellence.",
+    template: "%s | VEMOOSC",
   },
   description:
-    "WebCraft Consulting empowers businesses with cutting-edge solutions and exceptional services tailored to their unique needs — printing, SEO, social media, apps, web design and brand development.",
+    "VEMOOSC — Vision Excellence Maintenance & Operations Oil Services Company — is a UAE-based engineering and industrial solutions provider delivering reliable, safe and innovative services across the energy, infrastructure and industrial sectors.",
   keywords: [
-    "business consulting",
-    "printing services",
-    "SEO",
-    "digital marketing",
-    "web design",
-    "app development",
-    "brand development",
+    "oil services UAE",
+    "engineering solutions Abu Dhabi",
+    "industrial solutions provider",
+    "electrical maintenance Abu Dhabi",
+    "mechanical maintenance UAE",
+    "chemical services",
+    "civil works",
+    "construction company Abu Dhabi",
+    "manpower supply UAE",
+    "Al Dhafra",
+    "Ghayathi",
   ],
   openGraph: {
-    title: "WebCraft Consulting | Business Consulting, Amplified",
+    title: "VEMOOSC | Built on Vision. Driven by Excellence.",
     description:
-      "We empower businesses with cutting-edge solutions and exceptional services tailored to their unique needs.",
-    siteName: "WebCraft Consulting",
+      "A UAE-based engineering and industrial solutions provider delivering reliable, safe and innovative services across the energy, infrastructure and industrial sectors.",
+    siteName: "VEMOOSC",
     type: "website",
-    locale: "en_US",
+    locale: "en_AE",
   },
   twitter: {
     card: "summary_large_image",
-    title: "WebCraft Consulting | Business Consulting, Amplified",
+    title: "VEMOOSC | Built on Vision. Driven by Excellence.",
     description:
-      "We empower businesses with cutting-edge solutions and exceptional services tailored to their unique needs.",
+      "A UAE-based engineering and industrial solutions provider delivering reliable, safe and innovative services across the energy, infrastructure and industrial sectors.",
   },
 };
 
@@ -52,15 +57,23 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      data-theme="dark"
+      data-theme="light"
       className={`${spaceGrotesk.variable} h-full antialiased`}
+      // The pre-paint script swaps `data-theme` before React hydrates, so the
+      // server and client markup differ here by design.
+      suppressHydrationWarning
     >
+      <head>
+        <ThemeScript />
+      </head>
       <body className="min-h-full flex flex-col bg-background text-foreground">
-        <SmoothScroll />
-        <CursorFollower />
-        <Navbar />
-        <main className="flex-1">{children}</main>
-        <Footer />
+        <ThemeProvider>
+          <SmoothScroll />
+          <CursorFollower />
+          <Navbar />
+          <main className="flex-1">{children}</main>
+          <Footer />
+        </ThemeProvider>
       </body>
     </html>
   );

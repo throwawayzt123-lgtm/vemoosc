@@ -4,7 +4,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { NAV_LINKS } from "@/lib/site";
+import { NAV_LINKS, SITE } from "@/lib/site";
+import ThemeToggle from "./ThemeToggle";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
@@ -20,6 +21,11 @@ export default function Navbar() {
 
   // Close the mobile menu on route change.
   useEffect(() => setOpen(false), [pathname]);
+
+  // Only the home page puts a dark hero video behind the transparent bar.
+  // Every other route starts on the themed background, so the bar's contents
+  // must use the normal foreground colour or they vanish in light mode.
+  const overHero = pathname === "/" && !scrolled && !open;
 
   // Prevent background scroll while the mobile menu is open.
   useEffect(() => {
@@ -38,15 +44,18 @@ export default function Navbar() {
             : "max-w-7xl rounded-none border border-transparent bg-transparent px-5 py-4 sm:px-8 lg:px-14 lg:py-5"
         }`}
       >
-        <Link href="/" aria-label={`${"WebCraft Consulting"} — Home`}>
-          <Image
-            src="/webcraftLogo.webp"
-            alt="WebCraft Consulting"
-            width={2400}
-            height={480}
-            priority
-            className="h-8 w-auto md:h-10"
-          />
+        {/* Transparent logo mark — sits directly on the bar, no plate needed. */}
+        <Link href="/" aria-label={`${SITE.name} — Home`} className="shrink-0">
+          <span className="flex items-center">
+            <Image
+              src="/Logo2.png"
+              alt={SITE.name}
+              width={872}
+              height={644}
+              priority
+              className="h-10 w-auto md:h-12"
+            />
+          </span>
         </Link>
 
         {/* Desktop nav */}
@@ -57,8 +66,16 @@ export default function Navbar() {
               <Link
                 key={link.label}
                 href={link.href}
-                className={`transition hover:text-brand-light ${
-                  active ? "text-brand" : "text-white"
+                className={`transition ${
+                  overHero ? "hover:text-brand-light" : "hover:text-brand-accent"
+                } ${
+                  active
+                    ? overHero
+                      ? "text-brand-light"
+                      : "text-brand-accent"
+                    : overHero
+                      ? "text-white"
+                      : "text-foreground"
                 }`}
               >
                 {link.label}
@@ -68,10 +85,18 @@ export default function Navbar() {
         </nav>
 
         <div className="flex items-center gap-3">
+          <ThemeToggle
+            className={
+              overHero
+                ? "border-white/30 text-white hover:border-white/70 hover:text-white"
+                : ""
+            }
+          />    
+
           <Link
             href="/contact"
             className="hidden rounded-full bg-brand px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-brand-dark sm:inline-block"
-          > 
+          >
             Contact Now
           </Link>
 
@@ -81,7 +106,11 @@ export default function Navbar() {
             onClick={() => setOpen(true)}
             aria-label="Open menu"
             aria-expanded={open}
-            className="flex h-10 w-10 items-center justify-center rounded-full border border-border text-xl lg:hidden"
+            className={`flex h-10 w-10 items-center justify-center rounded-full border text-xl lg:hidden ${
+              overHero
+                ? "border-white/30 text-white"
+                : "border-border text-foreground"
+            }`}
           >
             <i className="ri-menu-line" aria-hidden="true" />
           </button>
@@ -96,14 +125,16 @@ export default function Navbar() {
         }`}
       >
         <div className="flex items-center justify-between">
-          <Link href="/" aria-label="WebCraft Consulting — Home" onClick={() => setOpen(false)}>
-            <Image
-              src="/webcraftLogo.webp"
-              alt="WebCraft Consulting"
-              width={2400}
-              height={480}
-              className="h-8 w-auto"
-            />
+          <Link href="/" aria-label={`${SITE.name} — Home`} onClick={() => setOpen(false)}>
+            <span className="flex items-center">
+              <Image
+                src="/Logo2.png"
+                alt={SITE.name}
+                width={872}
+                height={644}
+                className="h-10 w-auto"
+              />
+            </span>
           </Link>
           <button
             type="button"

@@ -6,7 +6,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Container from "../Container";
 import PageHeader from "../PageHeader";
 import { SITE, SERVICES } from "@/lib/site";
-
+ 
 gsap.registerPlugin(ScrollTrigger);
 
 const inputClass =
@@ -54,21 +54,25 @@ export default function ContactPageContent() {
       `${data.get("message")}`,
     ].join("\n");
 
-    window.location.href = `mailto:info@webcraftcons.com?subject=${encodeURIComponent(
+    window.location.href = `${SITE.emails[0].href}?subject=${encodeURIComponent(
       `New enquiry from ${data.get("name")}`
     )}&body=${encodeURIComponent(body)}`;
     setSent(true);
   };
 
+  // Phone and WhatsApp are not published yet — the "Call Us" card only appears
+  // once those values are filled in on SITE.
+  const callItems = [
+    ...(SITE.phone ? [{ label: SITE.phone.label, href: SITE.phone.href }] : []),
+    ...(SITE.whatsapp
+      ? [{ label: `${SITE.whatsapp.label} (WhatsApp)`, href: SITE.whatsapp.href }]
+      : []),
+  ];
+
   const CONTACT_CARDS = [
-    {
-      icon: "ri-phone-fill",
-      title: "Call Us",
-      items: [
-        { label: SITE.phone.label, href: SITE.phone.href },
-        { label: `${SITE.whatsapp.label} (WhatsApp)`, href: SITE.whatsapp.href },
-      ],
-    },
+    ...(callItems.length
+      ? [{ icon: "ri-phone-fill", title: "Call Us", items: callItems }]
+      : []),
     {
       icon: "ri-mail-fill",
       title: "Email Us",
@@ -87,7 +91,7 @@ export default function ContactPageContent() {
         eyebrow="Contact Us"
         title="Get In"
         accent="Touch"
-        intro="Ready to amplify your business? Tell us what you need and our team will get back to you with a tailored plan."
+        intro="Tell us about the works you need — maintenance, civil, construction, chemical or manpower — and our team will come back to you with a proposal."
       />
 
       <section className="bg-background py-20 md:py-28">
@@ -96,7 +100,7 @@ export default function ContactPageContent() {
             {/* Form */}
             <div className="rv rounded-3xl border border-border bg-surface p-7 md:p-10">
               <h2 className="text-2xl font-bold uppercase tracking-tight md:text-3xl">
-                Let&rsquo;s Start a <span className="text-brand">Conversation</span>
+                Send Us Your <span className="text-brand">Enquiry</span>
               </h2>
               <p className="mt-3 text-sm text-foreground-muted">
                 Fill in the details below and we&rsquo;ll be in touch shortly.
@@ -112,7 +116,7 @@ export default function ContactPageContent() {
                       id="name"
                       name="name"
                       required
-                      placeholder="Alex Johnson"
+                      placeholder="Your full name"
                       className={inputClass}
                     />
                   </div>
@@ -125,7 +129,7 @@ export default function ContactPageContent() {
                       name="email"
                       type="email"
                       required
-                      placeholder="alex@example.com"
+                      placeholder="you@company.com"
                       className={inputClass}
                     />
                   </div>
@@ -137,13 +141,24 @@ export default function ContactPageContent() {
                       id="phone"
                       name="phone"
                       type="tel"
-                      placeholder="+1 234567890"
+                      placeholder="+971 50 000 0000"
+                      className={inputClass}
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="company" className={labelClass}>
+                      Company
+                    </label>
+                    <input
+                      id="company"
+                      name="company"
+                      placeholder="Your company name"
                       className={inputClass}
                     />
                   </div>
                   <div>
                     <label htmlFor="service" className={labelClass}>
-                      Subject
+                      Service Required
                     </label>
                     <select id="service" name="service" defaultValue="" className={inputClass}>
                       <option value="" disabled>
@@ -168,7 +183,7 @@ export default function ContactPageContent() {
                     name="message"
                     required
                     rows={4}
-                    placeholder="Hello, can you help me with..."
+                    placeholder="Describe the scope of works, location and timeframe..."
                     className={`${inputClass} resize-y`}
                   />
                 </div>
@@ -188,7 +203,7 @@ export default function ContactPageContent() {
                   <p className="text-center text-xs text-foreground-muted" role="status">
                     Your email app should have opened with the message ready to send. If
                     nothing happened, email us directly at{" "}
-                    <a href={SITE.emails[0].href} className="text-brand-light underline">
+                    <a href={SITE.emails[0].href} className="text-brand-accent underline">
                       {SITE.emails[0].label}
                     </a>
                     .
@@ -231,20 +246,22 @@ export default function ContactPageContent() {
                 </div>
               ))}
 
-              <div className="rv flex gap-3">
-                {SITE.socials.map((s) => (
-                  <a
-                    key={s.label}
-                    href={s.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={s.label}
-                    className="flex h-12 w-12 items-center justify-center rounded-2xl border border-border text-lg transition hover:border-brand hover:bg-brand hover:text-white"
-                  >
-                    <i className={s.icon} aria-hidden="true" />
-                  </a>
-                ))}
-              </div>
+              {SITE.socials.length > 0 && (
+                <div className="rv flex gap-3">
+                  {SITE.socials.map((s) => (
+                    <a
+                      key={s.label}
+                      href={s.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={s.label}
+                      className="flex h-12 w-12 items-center justify-center rounded-2xl border border-border text-lg transition hover:border-brand hover:bg-brand hover:text-white"
+                    >
+                      <i className={s.icon} aria-hidden="true" />
+                    </a>
+                  ))}
+                </div>
+              )}
             </div>
           </div>
         </Container>
@@ -253,9 +270,9 @@ export default function ContactPageContent() {
       {/* Map */}
       <section className="border-t border-border">
         <iframe
-          title="WebCraft Consulting office location"
-          src="https://maps.google.com/maps?q=35%20Merritt%20Blvd%20STE%202000%20Fishkill%20NY%2012524&t=&z=15&ie=UTF8&iwloc=&output=embed"
-          className="h-[320px] w-full grayscale md:h-[420px]"
+          title="VEMOOSC office location — New Ghayathi Industrial Area, Abu Dhabi"
+          src="https://maps.google.com/maps?q=New%20Ghayathi%20Industrial%20Area%20Ghayathi%20Al%20Dhafra%20Abu%20Dhabi%20UAE&t=&z=13&ie=UTF8&iwloc=&output=embed"
+          className="h-[320px] w-full md:h-[420px]"
           loading="lazy"
           referrerPolicy="no-referrer-when-downgrade"
         />

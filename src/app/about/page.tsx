@@ -4,7 +4,7 @@ import AboutPageContent from "@/components/pages/AboutPageContent";
 export const metadata: Metadata = {
   title: "About Us",
   description:
-    "WebCraft Consulting redefines business consulting with an 'Amplified' approach — bold, innovative strategies that help your business thrive, not just adapt.",
+    "Vision Excellence Maintenance & Operations Oil Services Company — a UAE-based engineering and industrial solutions provider building lasting relationships founded on integrity, innovation and dependable performance.",
 };
 
 export default function AboutPage() {

@@ -4,7 +4,7 @@ import PortfolioPageContent from "@/components/pages/PortfolioPageContent";
 export const metadata: Metadata = {
   title: "Portfolio",
   description:
-    "See our printed menus, brand and digital work, and the social media accounts we manage for our clients.",
+    "Maintenance, civil, construction, chemical and manpower scopes VEMOOSC delivers for industrial and commercial clients across the Al Dhafra region.",
 };
 
 export default function PortfolioPage() {

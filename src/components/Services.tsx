@@ -4,53 +4,9 @@ import Image from "next/image";
 import { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { SERVICES } from "@/lib/site";
 
 gsap.registerPlugin(ScrollTrigger);
-
-const SERVICES = [
-  {
-    id: "01",
-    title: "Printing Services",
-    tagline: "Premium print, packaging & branded merchandise.",
-    image: "/images/services/Printing.jpeg",
-    color: "#2a0a10",
-  },
-  {
-    id: "02",
-    title: "SEO & Digital Marketing",
-    tagline: "Data-driven strategies that grow your reach.",
-    image: "/images/services/Seo.jpeg",
-    color: "#1c0a0d",
-  },
-  {
-    id: "03",
-    title: "Social Media Marketing",
-    tagline: "Content and campaigns that build real engagement.",
-    image: "/images/services/Marketing.jpeg",
-    color: "#24090e",
-  },
-  {
-    id: "04",
-    title: "App Development",
-    tagline: "Native and cross-platform apps built to scale.",
-    image: "/images/services/AppDev.jpeg",
-    color: "#170709",
-  },
-  {
-    id: "05",
-    title: "Responsive Web Design",
-    tagline: "Fast, modern websites for every device.",
-    image: "/images/services/WebDev.jpeg",
-    color: "#220a0f",
-  },
-  {
-    id: "06",
-    title: "Brand Development",
-    tagline: "Identity systems that make you unforgettable.",
-    image: "/images/services/Branding.jpeg",
-    color: "#1d0709",
-  },
-];
 
 export default function Services() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -142,17 +98,17 @@ export default function Services() {
       className="relative flex h-screen w-full flex-col overflow-hidden bg-background text-foreground"
     >
       {/* Seam — dissolves in from About above */}
-      <div className="pointer-events-none absolute inset-x-0 top-0 z-20 h-24 bg-gradient-to-b from-black/50 to-transparent" />
+      <div className="pointer-events-none absolute inset-x-0 top-0 z-20 h-24 bg-gradient-to-b from-seam to-transparent" />
 
       {/* Heading — pinned above the cards */}
       <div className="relative z-20 shrink-0 px-6 pt-16 text-center md:px-14 md:pt-20">
-        <p className="mb-4 flex items-center justify-center gap-3 text-xs font-semibold uppercase tracking-[0.4em] text-brand-light">
-          <span className="h-px w-8 bg-brand-light/70" />
-          Unmatched Expertise
-          <span className="h-px w-8 bg-brand-light/70" />
+        <p className="mb-4 flex items-center justify-center gap-3 text-xs font-semibold uppercase tracking-[0.4em] text-brand-accent">
+          <span className="h-px w-8 bg-brand-accent/60" />
+          Multi-Discipline Capability
+          <span className="h-px w-8 bg-brand-accent/60" />
         </p>
         <h2 className="text-4xl font-bold uppercase tracking-tight sm:text-5xl md:text-6xl">
-          Our Best <span className="text-brand">Services</span>
+          What We <span className="text-brand">Deliver</span>
         </h2>
       </div>
 
@@ -175,12 +131,13 @@ export default function Services() {
               className="group relative aspect-[16/10] h-[56vh] max-h-[520px] w-[84vw] shrink-0 overflow-hidden rounded-3xl border border-border shadow-2xl will-change-transform sm:w-auto"
               style={{ background: service.color, pointerEvents: "auto" }}
             >
-              {/* Background image (SEO-friendly, optimized, lazy-loaded).
-                  `text-transparent` hides the broken-image glyph if the file
-                  isn't present yet — the card's solid color shows instead. */}
+              {/* Placeholder background image — replace with real project
+                  photography. `text-transparent` hides the broken-image glyph
+                  if the file isn't present yet — the card's solid color shows
+                  instead. */}
               <Image
                 src={service.image}
-                alt={`${service.title} — WebCraft Consulting`}
+                alt=""
                 fill
                 sizes="(max-width: 640px) 84vw, 90vh"
                 className="object-cover text-transparent transition-transform duration-1000 ease-out group-hover:scale-110"
@@ -191,7 +148,7 @@ export default function Services() {
 
               {/* Smart heading at the bottom */}
               <div className="absolute inset-x-0 bottom-0 z-10 p-8 md:p-10">
-                <span className="mb-3 block text-sm font-semibold tracking-[0.3em] text-brand-light">
+                <span className="mb-3 block text-sm font-semibold tracking-[0.3em] text-brand-accent">
                   {service.id}
                 </span>
                 <div className="h-px w-12 bg-brand" />
