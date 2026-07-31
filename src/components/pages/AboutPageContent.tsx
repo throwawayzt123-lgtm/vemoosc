@@ -85,7 +85,7 @@ export default function AboutPageContent() {
         eyebrow="Vision Excellence Maintenance & Operations Oil Services Company"
         title="About"
         accent="VEMOOSC"
-        intro="A UAE-based engineering and industrial solutions provider committed to delivering reliable, safe and innovative services across the energy, infrastructure and industrial sectors."
+        intro="Delivering reliable, safe, and innovative engineering and maintenance solutions across the energy, infrastructure, and industrial sectors. Backed by five years of proven EPC experience from our Canadian operations."
       />
 
       {/* ─── Story: intro image + numbered narrative ─────────────────────── */}
@@ -150,9 +150,9 @@ export default function AboutPageContent() {
 
               <div className="mt-8 space-y-6">
                 {[
-                  "VEMOOSC — Vision Excellence Maintenance & Operations Oil Services Company — is a UAE-based engineering and industrial solutions provider committed to delivering reliable, safe and innovative services across the energy, infrastructure and industrial sectors.",
-                  "We provide comprehensive solutions designed to enhance operational efficiency, improve reliability, and support the evolving needs of our clients. Through technical expertise, quality-driven execution and a commitment to excellence, we deliver value that extends beyond every project.",
+                  "VEMOOSC – Vision Excellence Maintenance & Operations Oil Services Company is a UAE-based engineering and industrial solutions provider delivering reliable, safe, and innovative services across the energy, infrastructure, and industrial sectors. Backed by over five years of proven EPC experience through our Canadian operations, we combine international expertise with local execution to deliver high-quality engineering, procurement, construction, and maintenance solutions with a commitment to safety, quality, and excellence.",
                   "Our capability spans electrical and mechanical maintenance, chemical services, civil works, construction and skilled manpower support — brought together under one accountable team so our clients have fewer interfaces to manage and clearer ownership of the work.",
+                  "We provide comprehensive solutions designed to enhance operational efficiency, improve reliability, and support the evolving needs of our clients. Through technical expertise, quality-driven execution and a commitment to excellence, we deliver value that extends beyond every project.",
                 ].map((text, i) => (
                   <div key={i} className="rv flex gap-5">
                     <span className="shrink-0 font-mono text-sm font-bold text-brand/40">
@@ -164,11 +164,6 @@ export default function AboutPageContent() {
                   </div>
                 ))}
               </div>
-
-              <p className="rv mt-8 border-l-2 border-brand pl-5 text-lg font-medium italic leading-relaxed text-foreground md:text-xl">
-                &ldquo;At VEMOOSC, we don&rsquo;t just deliver solutions &mdash;
-                we help build a more efficient and sustainable future.&rdquo;
-              </p>
             </div>
           </div>
         </Container>

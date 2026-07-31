@@ -81,7 +81,7 @@ export default function PortfolioPageContent() {
         eyebrow="Our Work"
         title="Our"
         accent="Portfolio"
-        intro="The maintenance, civil, construction, chemical and manpower scopes we deliver for industrial and commercial clients across the Al Dhafra region."
+        intro="VEMOOSC is committed to providing high-quality engineering, maintenance, and industrial solutions across the UAE, ensuring every project is executed with uncompromising standards of safety, quality, efficiency, and operational excellence."
       />
 
       {/* Filter tabs + project grid */}
@@ -187,7 +187,7 @@ export default function PortfolioPageContent() {
             href="/contact"
             className="rv group mt-8 inline-flex items-center gap-2 rounded-full bg-brand px-8 py-4 text-sm font-semibold text-white transition hover:bg-brand-dark"
           >
-            Request a Quote
+            Request Services
             <span className="transition-transform duration-300 group-hover:translate-x-1">
               &rarr;
             </span>

@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
@@ -17,6 +18,7 @@ const DISCIPLINES = [
 ];
 
 const SECTORS = [
+  { icon: "ri-search-eye-line", label: "Technical Assessment" },
   { icon: "ri-oil-line", label: "Energy" },
   { icon: "ri-road-map-line", label: "Infrastructure" },
   { icon: "ri-building-3-line", label: "Industrial" },
@@ -209,33 +211,54 @@ export default function Hero() {
         {/* Hero content — left-aligned editorial layout */}
         <div className="hero-content-inner relative z-10 mx-auto flex w-full max-w-7xl flex-1 flex-col justify-center px-6 pb-6 pt-28 sm:px-10 md:px-14 md:pt-32">
           <div className="max-w-3xl">
-            <p className="hero-eyebrow mb-6 inline-flex items-center gap-3 rounded-full border border-white/20 bg-white/5 px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.3em] text-brand-light backdrop-blur-md">
+            {/* <p className="hero-eyebrow mb-6 inline-flex items-center gap-3 rounded-full border border-white/20 bg-white/5 px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.3em] text-brand-light backdrop-blur-md">
               <span className="relative flex h-2 w-2">
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-brand-light opacity-75" />
                 <span className="relative inline-flex h-2 w-2 rounded-full bg-brand-light" />
               </span>
               Built on Vision. Driven by Excellence.
-            </p>
+            </p> */}
+
+             {/* Carbon-reduction commitment strip — a second highlighted bar,
+                echoing the glass "Our Disciplines" bar below, in the site's
+                brand teal. Logo circle sized up so the badge artwork (skyline
+                + wordmark) actually reads instead of shrinking to a blur. */}
+            <Link
+              href="/about"
+              className="hero-cta group mt-5 inline-flex items-center gap-3 rounded-full "
+            >
+              <span className="flex h-14 w-14 shrink-0 items-center justify-center overflow-hidden rounded-full bg-white shadow-sm">
+                <Image
+                  src="/CarbonEmissionLogo.jpeg"
+                  alt=""
+                  width={220}
+                  height={220}
+                  className="h-full w-full scale-110 object-contain"
+                />
+              </span>
+              <span className="text-xs font-semibold text-white sm:text-sm">
+                Making a Change — Reducing Carbon Emission in the UAE
+              </span>
+              <i
+                className="ri-arrow-right-line text-brand-light transition-transform duration-300 group-hover:translate-x-1"
+                aria-hidden="true"
+              />
+            </Link>
 
             <h1 className="text-[13.5vw] font-bold uppercase leading-[0.85] tracking-tight sm:text-[10vw] md:text-[8vw] lg:text-[7.5vw]">
               <span className="block overflow-hidden">
                 <span className="hero-word block text-white">VEMOOSC</span>
               </span>
-              <span className="block overflow-hidden pb-[0.1em]">
-                <span className="hero-word block bg-gradient-to-r from-brand-light via-brand  bg-clip-text font-bold  text-transparent">
-                  Oil Services
-                </span>
-              </span>
             </h1>
 
-            <p className="hero-sub mt-6 max-w-xl text-base leading-relaxed text-white/85 md:text-lg">
+            <p className="hero-legal mt-4 text-sm font-medium italic leading-snug text-white sm:text-base md:text-lg">
+              Vision Excellence Maintenance &amp; Operation Oil Services Company
+            </p>
+
+            <p className="hero-sub mt-5 max-w-xl text-base leading-relaxed text-white/85 md:text-lg">
               A UAE-based engineering and industrial solutions provider
               delivering reliable, safe and innovative services across the
               energy, infrastructure and industrial sectors.
-            </p>
-
-            <p className="hero-legal mt-4 text-[11px] uppercase tracking-[0.25em] text-white/45">
-              Vision Excellence Maintenance &amp; Operations Oil Services Company
             </p>
 
             {/* Sector chips */}
@@ -256,7 +279,7 @@ export default function Hero() {
                 href="/contact"
                 className="group relative inline-flex items-center gap-2 overflow-hidden rounded-full bg-brand px-8 py-4 text-sm font-semibold text-white shadow-[0_8px_32px_-6px_var(--color-brand)] transition hover:-translate-y-0.5 hover:bg-brand-dark hover:shadow-[0_14px_44px_-6px_var(--color-brand)]"
               >
-                <span className="relative z-10">Request a Quote</span>
+                <span className="relative z-10">Request Services</span>
                 <i className="ri-arrow-right-line relative z-10 transition-transform duration-300 group-hover:translate-x-1" aria-hidden="true" />
               </Link>
               <Link
@@ -267,6 +290,8 @@ export default function Hero() {
                 <i className="ri-arrow-right-up-line transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" aria-hidden="true" />
               </Link>
             </div>
+
+           
           </div>
         </div>
 

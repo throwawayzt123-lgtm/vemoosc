@@ -60,8 +60,7 @@ export default function ContactPageContent() {
     setSent(true);
   };
 
-  // Phone and WhatsApp are not published yet — the "Call Us" card only appears
-  // once those values are filled in on SITE.
+  // The "Call Us" card only appears once phone/WhatsApp are filled in on SITE.
   const callItems = [
     ...(SITE.phone ? [{ label: SITE.phone.label, href: SITE.phone.href }] : []),
     ...(SITE.whatsapp

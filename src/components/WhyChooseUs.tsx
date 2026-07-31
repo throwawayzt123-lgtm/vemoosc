@@ -157,7 +157,7 @@ export default function WhyChooseUs() {
               href="/contact"
               className="mt-8 inline-flex w-full items-center justify-center gap-2 rounded-full border border-border px-6 py-3.5 text-sm font-semibold text-foreground transition hover:border-brand hover:text-brand md:w-auto"
             >
-              Request a Quote
+              Request Services
               <span className="transition-transform duration-300 group-hover:translate-x-1">
                 &rarr;
               </span>

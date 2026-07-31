@@ -7,10 +7,12 @@ export const SITE = {
     "Vision Excellence Maintenance & Operations Oil Services Company",
   tagline: "Built on Vision. Driven by Excellence.",
   descriptor:
-    "UAE-based engineering and industrial solutions provider serving the energy, infrastructure and industrial sectors.",
-  // Phone/WhatsApp are not published yet. Leave `null` and the UI will hide
-  // those entries; fill them in here and they reappear site-wide.
-  phone: null as { label: string; href: string } | null,
+    "VEMOOSC – Vision Excellence Maintenance & Operations Oil Services Company is a UAE-based engineering and industrial solutions provider delivering reliable, safe, and innovative services across the energy, infrastructure, and industrial sectors. Backed by over five years of proven EPC experience through our Canadian operations, we combine international expertise with local execution to deliver high-quality engineering, procurement, construction, and maintenance solutions with a commitment to safety, quality, and excellence.",
+  // Leave either `null` and the UI will hide that entry site-wide.
+  phone: { label: "+971 50 259 3318", href: "tel:+971502593318" } as {
+    label: string;
+    href: string;
+  } | null,
   whatsapp: null as { label: string; href: string } | null,
   emails: [{ label: "info@vemoosc.com", href: "mailto:info@vemoosc.com" }],
   address: {
@@ -42,6 +44,7 @@ export const SERVICES = [
   {
     slug: "electrical-maintenance",
     id: "01",
+    icon: "ri-flashlight-line",
     title: "Electrical Maintenance",
     tagline: "Power systems kept safe, compliant and running.",
     description:
@@ -57,6 +60,7 @@ export const SERVICES = [
   {
     slug: "mechanical-maintenance",
     id: "02",
+    icon: "ri-settings-3-line",
     title: "Mechanical Maintenance",
     tagline: "Rotating and static equipment at full uptime.",
     description:
@@ -72,6 +76,7 @@ export const SERVICES = [
   {
     slug: "chemical-services",
     id: "03",
+    icon: "ri-flask-line",
     title: "Chemical Services",
     tagline: "Cleaning, treatment and specialist handling.",
     description:
@@ -87,6 +92,7 @@ export const SERVICES = [
   {
     slug: "civil-works",
     id: "04",
+    icon: "ri-hammer-line",
     title: "Civil Works",
     tagline: "Groundworks, concrete and structural repair.",
     description:
@@ -102,6 +108,7 @@ export const SERVICES = [
   {
     slug: "construction",
     id: "05",
+    icon: "ri-building-3-line",
     title: "Construction",
     tagline: "Multi-discipline delivery, start to handover.",
     description:
@@ -117,6 +124,7 @@ export const SERVICES = [
   {
     slug: "manpower-support",
     id: "06",
+    icon: "ri-team-line",
     title: "Manpower Support",
     tagline: "Skilled trades, mobilised when you need them.",
     description:
@@ -128,5 +136,21 @@ export const SERVICES = [
     ],
     image: "/images/services/Manpower.jpg",
     color: "#131a1f",
+  },
+  {
+    slug: "technical-assessment",
+    id: "07",
+    icon: "ri-search-eye-line",
+    title: "Technical Assessment",
+    tagline: "Independent audits that find issues before they cost you.",
+    description:
+      "Energy, electrical, mechanical, structural and HSE assessments that give you an accurate, independent picture of asset condition and compliance — before failure, audit or shutdown forces the issue.",
+    features: [
+      "Energy & electrical system audits",
+      "Rotating equipment & process assessment",
+      "Structural integrity & HSE compliance review",
+    ],
+    image: "/images/services/Mechanical.jpg",
+    color: "#151d24",
   },
 ] as const;

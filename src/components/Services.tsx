@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -131,34 +132,40 @@ export default function Services() {
               className="group relative aspect-[16/10] h-[56vh] max-h-[520px] w-[84vw] shrink-0 overflow-hidden rounded-3xl border border-border shadow-2xl will-change-transform sm:w-auto"
               style={{ background: service.color, pointerEvents: "auto" }}
             >
-              {/* Placeholder background image — replace with real project
-                  photography. `text-transparent` hides the broken-image glyph
-                  if the file isn't present yet — the card's solid color shows
-                  instead. */}
-              <Image
-                src={service.image}
-                alt=""
-                fill
-                sizes="(max-width: 640px) 84vw, 90vh"
-                className="object-cover text-transparent transition-transform duration-1000 ease-out group-hover:scale-110"
-              />
+              <Link href={`/services/${service.slug}`} className="absolute inset-0">
+                {/* Placeholder background image — replace with real project
+                    photography. `text-transparent` hides the broken-image glyph
+                    if the file isn't present yet — the card's solid color shows
+                    instead. */}
+                <Image
+                  src={service.image}
+                  alt=""
+                  fill
+                  sizes="(max-width: 640px) 84vw, 90vh"
+                  className="object-cover text-transparent transition-transform duration-1000 ease-out group-hover:scale-110"
+                />
 
-              {/* Dark bottom-up scrim so the heading stays readable */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent" />
+                {/* Dark bottom-up scrim so the heading stays readable */}
+                <div className="absolute inset-0 bg-linear-to-t from-black/90 via-black/30 to-transparent" />
 
-              {/* Smart heading at the bottom */}
-              <div className="absolute inset-x-0 bottom-0 z-10 p-8 md:p-10">
-                <span className="mb-3 block text-sm font-semibold tracking-[0.3em] text-brand-accent">
-                  {service.id}
-                </span>
-                <div className="h-px w-12 bg-brand" />
-                <h3 className="mt-4 text-2xl font-bold uppercase leading-tight text-white md:text-3xl lg:text-4xl">
-                  {service.title}
-                </h3>
-                <p className="mt-3 max-w-md text-sm text-white/70 md:text-base">
-                  {service.tagline}
-                </p>
-              </div>
+                {/* Smart heading at the bottom */}
+                <div className="absolute inset-x-0 bottom-0 z-10 p-8 md:p-10">
+                  <span className="mb-3 block text-sm font-semibold tracking-[0.3em] text-brand-accent">
+                    {service.id}
+                  </span>
+                  <div className="h-px w-12 bg-brand" />
+                  <h3 className="mt-4 text-2xl font-bold uppercase leading-tight text-white md:text-3xl lg:text-4xl">
+                    {service.title}
+                  </h3>
+                  <p className="mt-3 max-w-md text-sm text-white/70 md:text-base">
+                    {service.tagline}
+                  </p>
+                  <span className="mt-4 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                    View Details
+                    <i className="ri-arrow-right-line" aria-hidden="true" />
+                  </span>
+                </div>
+              </Link>
             </article>
           ))}
         </div>

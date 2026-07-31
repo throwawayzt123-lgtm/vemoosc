@@ -104,15 +104,17 @@ export default function About() {
           <div className="about-reveal mt-8 space-y-5 text-base leading-relaxed text-foreground-muted md:text-lg">
             <p>
               VEMOOSC is a UAE-based engineering and industrial solutions
-              provider committed to delivering reliable, safe and innovative
-              services across the energy, infrastructure and industrial
-              sectors.
+              provider delivering reliable, safe, and innovative services
+              across the energy, infrastructure, and industrial sectors. Backed
+              by over five years of proven EPC experience through our Canadian
+              operations, we combine international expertise with local
+              execution to deliver high-quality solutions.
             </p>
             <p>
               Through technical expertise, quality-driven execution and a
-              commitment to excellence, we deliver value that extends beyond
-              every project &mdash; helping build a more efficient and
-              sustainable future.
+              commitment to safety, quality, and excellence, we deliver value
+              that extends beyond every project &mdash; helping build a more
+              efficient and sustainable future.
             </p>
           </div>
 

@@ -22,6 +22,7 @@ export default function ThemeToggle({
       onClick={toggleTheme}
       aria-label={label}
       title={label}
+      suppressHydrationWarning
       className={`relative flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-border text-lg text-foreground transition hover:border-brand hover:text-brand ${className}`}
     >
       <i

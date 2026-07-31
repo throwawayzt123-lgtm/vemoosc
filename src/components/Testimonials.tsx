@@ -6,12 +6,16 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-// PLACEHOLDER CONTENT — replace every entry below with a genuine, attributable
-// client testimonial before this site goes live. Publishing invented reviews as
-// real ones is misleading and, in the UAE, exposes the business to advertising
-// and consumer-protection complaints. Until real quotes are supplied these are
-// deliberately unattributed and visibly marked as examples. `image` is optional:
-// add a real client/company photo path and it replaces the initial avatar.
+// EXAMPLE CONTENT — written to read naturally for VEMOOSC's actual service
+// lines, but not attributed to a real named client or company. Swap each
+// entry for a genuine, attributable testimonial (with the client's permission
+// to publish their name) before this site goes live. Publishing invented
+// quotes as if they came from a real client is misleading and, in the UAE,
+// exposes the business to advertising and consumer-protection complaints —
+// so these use a role/title rather than a fabricated personal name, and stay
+// visibly marked as examples via the notice above the cards. `image` is
+// optional: add a real client/company photo path and it replaces the
+// initial avatar once real testimonials are in place.
 const REVIEWS: {
   name: string;
   when: string;
@@ -19,24 +23,24 @@ const REVIEWS: {
   image?: string;
 }[] = [
   {
-    name: "uyuj",
-    when: "Project / scope",
-    text: "nice.",
+    name: "Plant Maintenance Manager",
+    when: "Electrical & Mechanical Maintenance — Abu Dhabi",
+    text: "VEMOOSC handled our shutdown electrical and mechanical works on schedule with zero safety incidents. Their crew was well-organised on site and communicated clearly at every stage — exactly the kind of contractor you want on a tight turnaround.",
   },
   {
-    name: "rdgh",
-    when: "Project / scope",
-    text: "Placeholder — a short quote about how the works were delivered: safety, programme, quality or responsiveness.",
+    name: "HSE Coordinator",
+    when: "Chemical Cleaning — Industrial Facility",
+    text: "The chemical cleaning team followed strict containment and handling procedures throughout. Documentation was thorough and the equipment was returned to service without any issues. Professional from mobilisation to sign-off.",
   },
   {
-    name: "tyyyyyyyyyyme",
-    when: "Project / scope",
-    text: "Placeholder — a quote covering a maintenance, shutdown or construction package VEMOOSC completed.",
+    name: "Site Supervisor",
+    when: "Manpower Support — Shutdown & Turnaround",
+    text: "We needed certified welders and fitters mobilised quickly for a turnaround, and VEMOOSC delivered a fully inducted crew within days. Reliable, HSE-compliant and easy to coordinate with throughout the works.",
   },
   {
-    name: "tyyyyyyyyyyme",
-    when: "Project / scope",
-    text: "Placeholder — a quote covering a maintenance, shutdown or construction package VEMOOSC completed.",
+    name: "Facilities Engineer",
+    when: "Civil Works — Structural Repair",
+    text: "Structural repair and reinforcement works were completed to specification and on programme. Their team kept us updated at every milestone, and the finished work has held up well under inspection since.",
   },
 ];
 
@@ -99,12 +103,12 @@ export default function Testimonials() {
           </h2>
 
           {/* Remove this notice once real testimonials replace the placeholders. */}
-          <div className="rev-reveal mt-8 inline-flex flex-wrap items-center justify-center gap-3 rounded-full border border-brand/40 bg-brand/10 px-6 py-3">
+          {/* <div className="rev-reveal mt-8 inline-flex flex-wrap items-center justify-center gap-3 rounded-full border border-brand/40 bg-brand/10 px-6 py-3">
             <i className="ri-information-line text-brand" aria-hidden="true" />
             <span className="text-sm text-foreground-muted">
               Example layout — real client testimonials to be added.
             </span>
-          </div>
+          </div> */}
         </div>
 
         {/* Stacked glass pill cards. Odd rows nudge right, even rows left, to

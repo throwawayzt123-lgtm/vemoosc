@@ -16,7 +16,7 @@ export default function Home() {
       <About />
       <Services />
       <Gallery />
-      <FloatingGallery />
+      {/* <FloatingGallery /> */}
       <WhyChooseUs />
       <Testimonials />
       <CtaBand />

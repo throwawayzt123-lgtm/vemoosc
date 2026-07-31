@@ -69,7 +69,7 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col bg-background text-foreground">
         <ThemeProvider>
           <SmoothScroll />
-          <CursorFollower />
+          {/* <CursorFollower /> */}
           <Navbar />
           <main className="flex-1">{children}</main>
           <Footer />

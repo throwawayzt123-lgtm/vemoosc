@@ -56,7 +56,7 @@ export default function CtaBand() {
             href="/contact"
             className="group inline-flex items-center gap-2 rounded-full bg-brand px-8 py-4 text-sm font-semibold text-white transition hover:bg-brand-dark"
           >
-            Request a Quote
+            Request Services
             <i
               className="ri-arrow-right-line transition-transform duration-300 group-hover:translate-x-1"
               aria-hidden="true"

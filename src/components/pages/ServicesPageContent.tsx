@@ -83,9 +83,11 @@ export default function ServicesPageContent() {
                 </div>
 
                 <div className="flex flex-1 flex-col p-7">
-                  <h2 className="text-xl font-bold uppercase leading-tight md:text-2xl">
-                    {service.title}
-                  </h2>
+                  <Link href={`/services/${service.slug}`}>
+                    <h2 className="text-xl font-bold uppercase leading-tight transition group-hover:text-brand md:text-2xl">
+                      {service.title}
+                    </h2>
+                  </Link>
                   <p className="mt-3 text-sm leading-relaxed text-foreground-muted">
                     {service.description}
                   </p>
@@ -99,13 +101,22 @@ export default function ServicesPageContent() {
                     ))}
                   </ul>
 
-                  <Link
-                    href="/contact"
-                    className="mt-7 inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-wide text-brand-accent"
-                  >
-                    Request a Quote
-                    <i className="ri-arrow-right-line transition-transform group-hover:translate-x-1" aria-hidden="true" />
-                  </Link>
+                  <div className="mt-7 flex flex-wrap items-center gap-x-6 gap-y-3">
+                    <Link
+                      href={`/services/${service.slug}`}
+                      className="inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-wide text-foreground transition hover:text-brand"
+                    >
+                      View Details
+                      <i className="ri-arrow-right-line transition-transform group-hover:translate-x-1" aria-hidden="true" />
+                    </Link>
+                    <Link
+                      href="/contact"
+                      className="inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-wide text-brand-accent"
+                    >
+                      Request Services
+                      <i className="ri-arrow-right-line transition-transform group-hover:translate-x-1" aria-hidden="true" />
+                    </Link>
+                  </div>
                 </div>
               </article>
             ))}
