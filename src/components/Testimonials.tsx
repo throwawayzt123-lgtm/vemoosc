@@ -3,6 +3,7 @@
 import { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { prefersReducedMotion, revealHeadline } from "@/lib/animations";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -59,20 +60,44 @@ export default function Testimonials() {
 
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
+      const headline = rootRef.current?.querySelector<HTMLElement>(".rev-headline");
+      if (headline) revealHeadline(headline, { start: "top 80%" });
+      const accent =
+        rootRef.current?.querySelector<HTMLElement>(".rev-headline-accent");
+      if (accent) revealHeadline(accent, { start: "top 80%", delay: 0.12 });
+
       gsap.set(".rev-reveal", { opacity: 0, y: 32 });
-      gsap.set(".rev-card", { opacity: 0, y: 44, scale: 0.96 });
 
       gsap
         .timeline({
           scrollTrigger: { trigger: rootRef.current, start: "top 72%" },
           defaults: { ease: "power3.out" },
         })
-        .to(".rev-reveal", { opacity: 1, y: 0, duration: 0.8, stagger: 0.1 }, 0)
-        .to(
-          ".rev-card",
-          { opacity: 1, y: 0, scale: 1, duration: 0.9, stagger: 0.18 },
-          0.25
+        .to(".rev-reveal", { opacity: 1, y: 0, duration: 0.8, stagger: 0.1 }, 0);
+
+      // Each card flies in from the side it rests on, so the offset stack
+      // reads as deliberate rather than a plain vertical fade.
+      gsap.utils.toArray<HTMLElement>(".rev-card").forEach((card, i) => {
+        const fromLeft = i % 2 === 0;
+        gsap.fromTo(
+          card,
+          {
+            opacity: 0,
+            x: prefersReducedMotion() ? 0 : fromLeft ? -70 : 70,
+            rotate: prefersReducedMotion() ? 0 : fromLeft ? -3 : 3,
+            scale: 0.94,
+          },
+          {
+            opacity: 1,
+            x: 0,
+            rotate: 0,
+            scale: 1,
+            duration: 1,
+            ease: "power3.out",
+            scrollTrigger: { trigger: card, start: "top 88%" },
+          }
         );
+      });
     }, rootRef);
 
     return () => ctx.revert();
@@ -98,8 +123,11 @@ export default function Testimonials() {
             Client Feedback
             <span className="h-px w-8 bg-brand-accent/60" />
           </p>
-          <h2 className="rev-reveal text-4xl font-bold uppercase tracking-tight sm:text-5xl md:text-6xl">
-            What Our <span className="text-brand">Clients Say</span>
+          <h2 className="text-4xl font-bold uppercase tracking-tight sm:text-5xl md:text-6xl">
+            <span className="rev-headline inline-block">What Our</span>{" "}
+            <span className="rev-headline-accent inline-block text-brand">
+              Clients Say
+            </span>
           </h2>
 
           {/* Remove this notice once real testimonials replace the placeholders. */}

@@ -3,6 +3,8 @@ import { Space_Grotesk } from "next/font/google";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import SmoothScroll from "@/components/SmoothScroll";
+import ScrollProgress from "@/components/ScrollProgress";
+import IntroCurtain, { IntroScript } from "@/components/IntroCurtain";
 import CursorFollower from "@/components/CursorFollower";
 import { ThemeProvider, ThemeScript } from "@/components/ThemeProvider";
 import "./globals.css";
@@ -65,10 +67,13 @@ export default function RootLayout({
     >
       <head>
         <ThemeScript />
+        <IntroScript />
       </head>
       <body className="min-h-full flex flex-col bg-background text-foreground">
         <ThemeProvider>
+          <IntroCurtain />
           <SmoothScroll />
+          <ScrollProgress />
           {/* <CursorFollower /> */}
           <Navbar />
           <main className="flex-1">{children}</main>

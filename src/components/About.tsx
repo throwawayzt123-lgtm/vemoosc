@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { prefersReducedMotion } from "@/lib/animations";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -59,6 +60,42 @@ export default function About() {
         yoyo: true,
         repeat: -1,
       });
+
+      if (!prefersReducedMotion()) {
+        // Scroll-linked parallax: the two photos travel at different speeds,
+        // giving the composition real depth as the section passes through.
+        gsap.to(".about-img-back", {
+          yPercent: -8,
+          ease: "none",
+          scrollTrigger: {
+            trigger: rootRef.current,
+            start: "top bottom",
+            end: "bottom top",
+            scrub: true,
+          },
+        });
+        gsap.to(".about-img-front", {
+          yPercent: 12,
+          ease: "none",
+          scrollTrigger: {
+            trigger: rootRef.current,
+            start: "top bottom",
+            end: "bottom top",
+            scrub: true,
+          },
+        });
+        // The watermark drifts opposite the scroll for extra separation.
+        gsap.to(".about-watermark", {
+          xPercent: -6,
+          ease: "none",
+          scrollTrigger: {
+            trigger: rootRef.current,
+            start: "top bottom",
+            end: "bottom top",
+            scrub: true,
+          },
+        });
+      }
     }, rootRef);
 
     return () => ctx.revert();
@@ -77,7 +114,7 @@ export default function About() {
       <div className="pointer-events-none absolute -left-40 top-1/3 h-[36rem] w-[36rem] rounded-full bg-brand/10 blur-[130px]" />
       <span
         aria-hidden="true"
-        className="pointer-events-none absolute -right-6 top-10 select-none text-[22vw] font-bold uppercase leading-none tracking-tighter text-foreground/[0.03] md:text-[16vw]"
+        className="about-watermark pointer-events-none absolute -right-6 top-10 select-none text-[22vw] font-bold uppercase leading-none tracking-tighter text-foreground/[0.03] md:text-[16vw]"
       >
         Vemoosc
       </span>

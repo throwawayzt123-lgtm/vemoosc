@@ -118,3 +118,20 @@ body::-webkit-scrollbar {
   display: none; /* Chrome, Safari, new Edge */
 }
 
+/* Intro curtain: paint the black cover before React hydrates, so the page
+   never flashes its content for a frame ahead of the curtain mounting.
+   `intro-pending` is set by a pre-paint script and removed by the component
+   once its own stripes are on screen. */
+html.intro-pending::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 99;
+  background: #050506;
+  pointer-events: none;
+}
+
+html.intro-pending body {
+  overflow: hidden;
+}
+

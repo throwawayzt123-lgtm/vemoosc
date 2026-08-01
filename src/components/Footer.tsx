@@ -92,17 +92,17 @@ export default function Footer() {
               Get In Touch
             </h3>
             <ul className="space-y-3 text-sm text-foreground-muted">
-              {SITE.phone && (
-                <li>
+              {SITE.phones.map((phone) => (
+                <li key={phone.label}>
                   <a
-                    href={SITE.phone.href}
+                    href={phone.href}
                     className="flex items-center gap-3 transition hover:text-brand"
                   >
                     <i className="ri-phone-fill shrink-0 text-brand" aria-hidden="true" />
-                    {SITE.phone.label}
+                    {phone.label}
                   </a>
                 </li>
-              )}
+              ))}
               {SITE.whatsapp && (
                 <li>
                   <a

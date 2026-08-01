@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
@@ -219,41 +218,38 @@ export default function Hero() {
               Built on Vision. Driven by Excellence.
             </p> */}
 
-             {/* Carbon-reduction commitment strip — a second highlighted bar,
-                echoing the glass "Our Disciplines" bar below, in the site's
-                brand teal. Logo circle sized up so the badge artwork (skyline
-                + wordmark) actually reads instead of shrinking to a blur. */}
+            {/* Carbon-reduction commitment line — plain text over the video,
+                no pill or plate behind it, so it reads as a light strapline
+                rather than a heavy badge. */}
             <Link
               href="/about"
-              className="hero-cta group mt-5 inline-flex items-center gap-3 rounded-full "
+              className="hero-cta group mt-5 inline-flex items-center gap-2.5 transition hover:opacity-90"
             >
-              <span className="flex h-14 w-14 shrink-0 items-center justify-center overflow-hidden rounded-full bg-white shadow-sm">
-                <Image
-                  src="/CarbonEmissionLogo.jpeg"
-                  alt=""
-                  width={220}
-                  height={220}
-                  className="h-full w-full scale-110 object-contain"
-                />
-              </span>
-              <span className="text-xs font-semibold text-white sm:text-sm">
-                Making a Change — Reducing Carbon Emission in the UAE
+              <i className="ri-leaf-fill text-3xl text-white" aria-hidden="true" />
+              <span className="text-xs font-medium tracking-[0.02em] text-white/90 sm:text-sm">
+                We Support &mdash; Reducing Carbon Emission in the UAE
               </span>
               <i
-                className="ri-arrow-right-line text-brand-light transition-transform duration-300 group-hover:translate-x-1"
+                className="ri-arrow-right-line text-sm text-brand-light transition-transform duration-300 group-hover:translate-x-1"
                 aria-hidden="true"
               />
             </Link>
 
             <h1 className="text-[13.5vw] font-bold uppercase leading-[0.85] tracking-tight sm:text-[10vw] md:text-[8vw] lg:text-[7.5vw]">
               <span className="block overflow-hidden">
-                <span className="hero-word block text-white">VEMOOSC</span>
+                <span className="hero-word  block text-[#3694B1]">VEMOOSC</span>
               </span>
             </h1>
 
-            <p className="hero-legal mt-4 text-sm font-medium italic leading-snug text-white sm:text-base md:text-lg">
-              Vision Excellence Maintenance &amp; Operation Oil Services Company
-            </p>
+            {/* Full legal name — deliberately elevated rather than fine print:
+                a bright gradient wordmark on its own accented rule, so it
+                reads as part of the identity block under VEMOOSC. */}
+            <div className="hero-legal mt-5 flex items-center gap-4">
+              <span className="hidden h-10 w-1 shrink-0 rounded-full bg-gradient-to-b from-brand-light to-brand sm:block" />
+              <p className="bg-gradient-to-r from-white via-cyan-400 to-white bg-clip-text text-base font-bold uppercase leading-snug tracking-[0.06em] text-transparent drop-shadow-[0_2px_12px_rgba(27,140,176,0.45)] sm:text-lg md:text-xl">
+                Vision Excellence Maintenance &amp; Operation Oil Services Company
+              </p>
+            </div>
 
             <p className="hero-sub mt-5 max-w-xl text-base leading-relaxed text-white/85 md:text-lg">
               A UAE-based engineering and industrial solutions provider

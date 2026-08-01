@@ -62,7 +62,7 @@ export default function ContactPageContent() {
 
   // The "Call Us" card only appears once phone/WhatsApp are filled in on SITE.
   const callItems = [
-    ...(SITE.phone ? [{ label: SITE.phone.label, href: SITE.phone.href }] : []),
+    ...SITE.phones.map((p) => ({ label: p.label, href: p.href })),
     ...(SITE.whatsapp
       ? [{ label: `${SITE.whatsapp.label} (WhatsApp)`, href: SITE.whatsapp.href }]
       : []),

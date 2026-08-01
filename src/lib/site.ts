@@ -8,11 +8,12 @@ export const SITE = {
   tagline: "Built on Vision. Driven by Excellence.",
   descriptor:
     "VEMOOSC – Vision Excellence Maintenance & Operations Oil Services Company is a UAE-based engineering and industrial solutions provider delivering reliable, safe, and innovative services across the energy, infrastructure, and industrial sectors. Backed by over five years of proven EPC experience through our Canadian operations, we combine international expertise with local execution to deliver high-quality engineering, procurement, construction, and maintenance solutions with a commitment to safety, quality, and excellence.",
-  // Leave either `null` and the UI will hide that entry site-wide.
-  phone: { label: "+971 50 259 3318", href: "tel:+971502593318" } as {
-    label: string;
-    href: string;
-  } | null,
+  // An empty list hides the phone entries site-wide; add more in the same
+  // shape and they appear everywhere phone numbers are listed.
+  phones: [
+    { label: "+971 50 259 3318", href: "tel:+971502593318" },
+    { label: "+971 56 905 8170", href: "tel:+971569058170" },
+  ] as ReadonlyArray<{ label: string; href: string }>,
   whatsapp: null as { label: string; href: string } | null,
   emails: [{ label: "info@vemoosc.com", href: "mailto:info@vemoosc.com" }],
   address: {
