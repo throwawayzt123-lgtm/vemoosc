@@ -167,7 +167,7 @@ export default function IntroCurtain() {
           background, so it sits on an intentional white plate rather than
           reading as a stray box on the black curtain. */}
       <div className="absolute inset-0 flex flex-col items-center justify-center gap-5">
-        <div className="intro-logo rounded-2xl bg-white px-8 py-6 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.6)]">
+        <div className="intro-logo rounded-[100%] bg-white px-8 py-6 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.6)]">
           <Image
             src="/logo.png"
             alt="VEMOOSC"
